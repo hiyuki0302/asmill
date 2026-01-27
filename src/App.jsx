@@ -3,15 +3,19 @@ import { useState } from "react";
 function App() {
   const item = [{id: 0, name:'Apple'}, {id: 1, name:'Banana'}, {id: 2, name:'Cherry'}, {id: 3, name:'Date'}, {id: 4, name:'Elderberry'}];
  
-  const SelectItemes = item.map(a => 
+  // testtext
+  const SelectItems = item.map(a => 
         <option key={a.id}>{a.name}</option>
     );
 
   return(
     <div>
-      <select>
-        {SelectItemes}
-      </select>
+      <label>
+        フルーツを選んでください。
+        <select>
+          {SelectItems}
+        </select>
+      </label>
     </div>
   )
 }
