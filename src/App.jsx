@@ -1,19 +1,19 @@
 import { useState } from "react";
+import {master} from './master_data.js';
 
 function App() {
-  const item = [{id: 0, name:'Apple'}, {id: 1, name:'Banana'}, {id: 2, name:'Cherry'}, {id: 3, name:'Date'}, {id: 4, name:'Elderberry'}];
- 
-  // testtext
-  const SelectItems = item.map(a => 
-        <option key={a.id}>{a.name}</option>
-    );
+  const extraInfo = master[0].roles;
+
+  const roles = extraInfo.map(role =>
+    <option key={role.code}>{role.job}</option>
+  )
 
   return(
     <div>
       <label>
-        フルーツを選んでください。
+        選択してください：
         <select>
-          {SelectItems}
+          {roles}
         </select>
       </label>
     </div>
