@@ -1,6 +1,12 @@
 import { useState } from "react";
 import {master} from './master_data.js';
 
+function getCSV() {
+  let data;
+  data.open("get", "test.csv", true);
+  console.log("CSVの中身:", data);
+}
+
 function App() {
   const extraInfo = master[0].roles;
 

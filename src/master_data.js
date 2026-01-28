@@ -7,6 +7,7 @@ export const master = [
             {code: '02', job: 'n' },
             {code: '03', job: 'p' },
             {code: '04', job: 'o' },
+            {code: '05', job: 'g' },
         ]
     }
 ]
