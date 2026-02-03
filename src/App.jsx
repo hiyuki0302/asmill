@@ -10,7 +10,7 @@ function Side_bar() {
   ]
   
   const test = groups.map(g => 
-    <p class="bg-cyan-500 py-1 my-1 w-12.5 " key={g.id}>{g.name}</p>
+    <p key={g.id}>{g.name}</p>
   )
 
   return test
@@ -24,22 +24,23 @@ function App() {
   )
 
   return(
-    <body>
-
-      <aside>
+    <>
+      <header>
+        <h1>ようこそ</h1>
+      </header>
+    
+      <body class="border-2 rounded-sm w-40 h-100">
         <Side_bar />
-      </aside>
-      
-      <form>
-        <label>
-          選択してください：
-          <select>
-            {roles}
-          </select>
-        </label>
-      </form>
-
-    </body>
+          <form>
+            <label>
+              選択してください：
+              <select>
+                {roles}
+              </select>
+            </label>
+          </form>
+      </body>
+    </>
   )
 }
 
