@@ -5,12 +5,12 @@ import './demo.css'
 
 function Side_bar() {
   const groups = [
-    { id: '01', name: 'Title01', icon: '✒️'},
-    { id: '02', name: 'Title02', icon: '✒️'}
+    { id: '01', name: 'SideMenu01', icon: '✒️'},
+    { id: '02', name: 'SideMenu02', icon: '✒️'}
   ]
   
   const test = groups.map(g => 
-    <p key={g.id}>{g.name}</p>
+    <li class="hover:underline" key={g.id}>{g.name}</li>
   )
 
   return test
@@ -25,21 +25,33 @@ function App() {
 
   return(
     <>
-      <header>
-        <h1>ようこそ</h1>
+      <header class="flex items-center justify-between bg-gray-800 text-white">
+        <h1 class="text-2xl font-bold">Title</h1>
+        <nav>
+          <ul class="flex gap-6">
+            <li><a href="#" className="hover:underline">menu1</a></li>
+            <li><a href="#" className="hover:underline">menu2</a></li>
+            <li><a href="#" className="hover:underline">menu3</a></li>
+          </ul>
+        </nav>
       </header>
-    
-      <body class="border-2 rounded-sm w-40 h-100">
-        <Side_bar />
-          <form>
-            <label>
-              選択してください：
-              <select>
-                {roles}
-              </select>
-            </label>
-          </form>
-      </body>
+
+      <div class="flex h-screen">
+        <aside class="border-r-1 border-slate-300/50 w-40">
+            <ul>
+              <Side_bar />
+            </ul>
+        </aside>
+
+        <main class="bg-sky-200 w-screen">
+          <label class="ml-2">
+            Select:
+            <select>
+              {roles}
+            </select>
+          </label>
+        </main>
+      </div>
     </>
   )
 }
