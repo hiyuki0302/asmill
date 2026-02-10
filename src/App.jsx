@@ -37,13 +37,13 @@ function App() {
       </header>
 
       <div class="flex h-screen">
-        <aside class="border-r-1 border-slate-300/50 w-40">
+        <aside class="bg-sky-200/50 w-30">
             <ul>
               <Side_bar />
             </ul>
         </aside>
 
-        <main class="bg-sky-200 w-screen">
+        <main class="border-l-1 border-slate-100/50 w-40">
           <label class="ml-2">
             Select:
             <select>
