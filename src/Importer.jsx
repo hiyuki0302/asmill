@@ -1,32 +1,32 @@
 import React, { useState } from "react";
-import Papa from 'papaparse';
+import { invoke } from "@tauri-apps/api/core";
+import {master} from './master_data.js';
 
-function CsvImporter() {
+const columnMaps = {
+    Example01: { "01": "部長", "02": "主任", "03": "一般" },
+};
+
+function CsvImporter({ columns }) {
     const [data, setData] = useState([]);
 
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
-
-        Papa.parse(file, {
-            header: true,  // 最初の行をヘッダーとして扱う
-            complete: (results) => {
-                console.log(results.data);
-                setData(results.data);
-            },
-            error: (error) => {
-                console.error('Error:', error);
-            }
-        });
+    const handleLoadCsv = async () => {
+        try {
+            const result = await invoke("read_csv", { path: "src/test.csv" });
+            console.log(result);
+            setData(result);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
   return (
     <div>
-      <input type="file" accept=".csv" onChange={handleFileUpload} />
+      <button onClick={handleLoadCsv}>CSVを読み込む</button>
       {data.length > 0 && (
         <table>
           <thead>
             <tr>
-              {Object.keys(data[0]).map((key) => (
+              {(columns || Object.keys(data[0])).map((key) => (
                 <th key={key}>{key}</th>
               ))}
             </tr>
@@ -34,8 +34,8 @@ function CsvImporter() {
           <tbody>
             {data.map((row, index) => (
               <tr key={index}>
-                {Object.values(row).map((value, i) => (
-                  <td key={i}>{value}</td>
+                {(columns || Object.keys(row)).map((key) => (
+                  <td key={key}>{columnMaps[key] ? (columnMaps[key][row[key]] ?? "") : row[key]}</td>
                 ))}
               </tr>
             ))}
