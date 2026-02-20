@@ -3,7 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import {master} from './master_data.js';
 
 const columnMaps = {
-    Example01: { "01": "部長", "02": "主任", "03": "一般" },
+    Example01: { "11": "部長", "12": "主任", "13": "一般" },
 };
 
 function CsvImporter({ columns }) {
@@ -11,7 +11,7 @@ function CsvImporter({ columns }) {
 
     const handleLoadCsv = async () => {
         try {
-            const result = await invoke("read_csv", { path: "src/test.csv" });
+            const result = await invoke("read_csv", { path: "../src/test.csv" });
             console.log(result);
             setData(result);
         } catch (error) {

@@ -1,8 +1,11 @@
 イテレータ
-要素を1つずつ取り出す。.nextで次の要素を取り出せる。
+要素を1つずつ取り出す。.nextで次の要素を取り出せる。&str
 
 イニューマレイト
-イテレータにつけれる。インデックス番号を取り出せる。
+イテレータにつけれる。インデックス番号を取り出せる。usize
+
+.iter().enumerate()
+(usize, &str)
 
 .get()
 インデックスを指定して、Option<&T>で要素を借用。
@@ -13,3 +16,22 @@ Noneの時、""を返す。
 ・HashMap
 ::new()で作成。.insert(key, value)
 {"key":"value"}
+
+ivoke
+invoke("関数名", {引数});
+非同期関数
+
+.contain()
+指定した文字列が含まれているか。
+返り値はbool型
+
+.filter()
+クロージャがboolを返すことを前提に式を組む必要がある
+.filter(|e| exm.contain(&test))
+
+.map()
+型変換
+.map(|(index, value)| index, value.to_string() )
+
+.collect()
+まとめる。どのような形でまとめるか指定が必須。
